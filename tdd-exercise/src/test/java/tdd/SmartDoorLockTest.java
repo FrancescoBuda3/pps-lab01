@@ -11,4 +11,13 @@ public class SmartDoorLockTest {
         smartDoorLock.lock();
         assertTrue(smartDoorLock.isLocked());
     }
+
+    @Test
+    public void canBeUnlocked(){
+        int pin = 1111;
+        SmartDoorLock smartDoorLock = new SimpleSmartDoorLock();
+        smartDoorLock.lock();
+        smartDoorLock.unlock(pin);
+        assertFalse(smartDoorLock.isLocked());
+    }
 }
