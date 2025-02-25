@@ -22,8 +22,19 @@ public class SmartDoorLockTest {
     @Test
     public void canBeUnlocked(){
         int pin = 1111;
+        smartDoorLock.setPin(pin);
         smartDoorLock.lock();
         smartDoorLock.unlock(pin);
         assertFalse(smartDoorLock.isLocked());
+    }
+
+    @Test
+    public void cantBeUnlockedWithWrongPin(){
+        int pin = 1111;
+        int wrongPin = 1122;
+        smartDoorLock.setPin(pin);
+        smartDoorLock.lock();
+        smartDoorLock.unlock(wrongPin);
+        assertTrue(smartDoorLock.isLocked());
     }
 }
