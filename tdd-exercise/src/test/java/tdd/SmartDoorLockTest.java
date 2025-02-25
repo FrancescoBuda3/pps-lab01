@@ -62,11 +62,9 @@ public class SmartDoorLockTest {
         assertAll(
                 () -> assertFalse(smartDoorLock.isBlocked()),
                 () -> assertFalse(smartDoorLock.isLocked()),
-                () -> assertEquals(0, smartDoorLock.getFailedAttempts())
+                () -> assertEquals(0, smartDoorLock.getFailedAttempts()),
+                () -> assertThrows(IllegalStateException.class, () -> smartDoorLock.lock())
         );
-        smartDoorLock.lock();
-        smartDoorLock.unlock(PIN);
-        assertTrue(smartDoorLock.isLocked());
     }
 
     @Test
