@@ -25,7 +25,11 @@ public class SimpleSmartDoorLock implements SmartDoorLock {
 
     @Override
     public void lock() {
-        this.isLoked = true;
+        if (this.pin != 0) {
+            this.isLoked = true;
+        } else {
+            throw new IllegalStateException();
+        }
     }
 
     @Override
