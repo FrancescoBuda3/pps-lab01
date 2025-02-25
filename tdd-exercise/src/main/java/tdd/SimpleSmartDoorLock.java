@@ -14,7 +14,7 @@ public class SimpleSmartDoorLock implements SmartDoorLock {
 
     @Override
     public void unlock(int pin) {
-        if (pin == this.pin) {
+        if (pin == this.pin && !isBlocked()) {
             isLoked = false;
         } else {
             attempts++;

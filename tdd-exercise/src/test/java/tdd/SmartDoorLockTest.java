@@ -50,6 +50,14 @@ public class SmartDoorLockTest {
         assertTrue(smartDoorLock.isBlocked());
     }
 
+    @Test
+    public void cantBeUnlockedIfBlocked(){
+        smartDoorLock.lock();
+        blockLock();
+        smartDoorLock.unlock(PIN);
+        assertTrue(smartDoorLock.isLocked());
+    }
+
     private void assertIsReset() {
         assertAll(
                 () -> assertFalse(smartDoorLock.isBlocked()),
