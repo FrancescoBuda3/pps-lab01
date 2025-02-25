@@ -77,4 +77,12 @@ public class SmartDoorLockTest {
         assertIsReset();
     }
 
+    @Test
+    public void pinCantBeSetIfLocked(){
+        int newPin = 1234;
+        smartDoorLock.lock();
+        smartDoorLock.setPin(newPin);
+        smartDoorLock.unlock(newPin);
+        assertTrue(smartDoorLock.isLocked());
+    }
 }

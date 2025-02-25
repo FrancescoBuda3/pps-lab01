@@ -9,7 +9,9 @@ public class SimpleSmartDoorLock implements SmartDoorLock {
 
     @Override
     public void setPin(int pin) {
-        this.pin = pin;
+        if (!isLoked) {
+            this.pin = pin;
+        }
     }
 
     @Override
