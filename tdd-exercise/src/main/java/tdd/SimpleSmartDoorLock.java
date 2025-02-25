@@ -1,6 +1,8 @@
 package tdd;
 
 public class SimpleSmartDoorLock implements SmartDoorLock {
+    public static int MAX_ATTEMPTS = 10;
+
     private boolean isLoked;
     private int pin;
 
@@ -28,7 +30,7 @@ public class SimpleSmartDoorLock implements SmartDoorLock {
 
     @Override
     public boolean isBlocked() {
-        return false;
+        return true;
     }
 
     @Override
