@@ -90,17 +90,33 @@ class MinMaxStackImplTest {
         assertThrows(IllegalStateException.class, () -> stack.getMax());
     }
 
+    private void popUntil(int value) {
+        int poppedValue;
+        do {
+            poppedValue = this.stack.pop();
+        } while (poppedValue != value);
+    }
+
     @Test
     public void getTheSecondSmallestValueIfTheMinimumWasPopped(){
         fillWithTestValues();
         Optional<Integer> secondSmallestValue = TEST_VALUES.stream()
                 .filter(x -> x != MIN_TEST_VALUE)
                 .min(Integer::compareTo);
-        int poppedValue;
-        do {
-            poppedValue = this.stack.pop();
-        } while (poppedValue != MIN_TEST_VALUE);
-        secondSmallestValue.ifPresent(integer -> assertEquals(integer, stack.getMin()));
+        popUntil(MIN_TEST_VALUE);
+        secondSmallestValue.ifPresent(newMinimum -> assertEquals(newMinimum, stack.getMin()));
+    }
+
+
+
+    @Test
+    public void getTheSecondLargestValueIfTheMaximumWasPopped(){
+        fillWithTestValues();
+        Optional<Integer> secondLargestValue = TEST_VALUES.stream()
+                .filter(x -> x != MAX_TEST_VALUE)
+                .max(Integer::compareTo);
+        popUntil(MAX_TEST_VALUE);
+        secondLargestValue.ifPresent(newMaximum -> assertEquals(newMaximum, stack.getMax()));
     }
 
 }
