@@ -81,4 +81,9 @@ class MinMaxStackImplTest {
         assertThrows(IllegalStateException.class, () -> stack.peek());
     }
 
+    @Test
+    public void cannotGetTheMinimumValueIfEmpty(){
+        assertThrows(IllegalStateException.class, () -> stack.getMin());
+    }
+
 }

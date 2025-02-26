@@ -19,7 +19,7 @@ public class MinMaxStackImpl  implements MinMaxStack {
     }
 
     public int pop() {
-        if (stack.isEmpty()) {
+        if (this.stack.isEmpty()) {
             throw new IllegalStateException();
         } else {
             return this.stack.removeFirst();
@@ -28,7 +28,7 @@ public class MinMaxStackImpl  implements MinMaxStack {
 
     @Override
     public int peek() {
-        if (stack.isEmpty()) {
+        if (this.stack.isEmpty()) {
             throw new IllegalStateException();
         } else {
             return this.stack.getFirst();
@@ -37,7 +37,11 @@ public class MinMaxStackImpl  implements MinMaxStack {
 
     @Override
     public int getMin() {
-        return this.min;
+        if (this.stack.isEmpty()) {
+            throw new IllegalStateException();
+        } else {
+            return this.min;
+        }
     }
 
     @Override
