@@ -65,4 +65,10 @@ class MinMaxStackImplTest {
         assertEquals(TEST_VALUES, poppedValues.reversed());
     }
 
+    @Test
+    public void returnsTheCorrectSize(){
+        fillWithTestValues();
+        assertEquals(TEST_VALUES.size(), this.stack.size());
+    }
+
 }
