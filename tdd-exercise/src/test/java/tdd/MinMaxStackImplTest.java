@@ -12,6 +12,7 @@ class MinMaxStackImplTest {
     public static final int TEST_VALUE = 5;
     public static final List<Integer> TEST_VALUES = List.of(2, 3, 6, 12, 1, 7, 4, 22, 5);
     private static final int MIN_TEST_VALUE = 1;
+    private static final int MAX_TEST_VALUE = 22;
 
     private MinMaxStackImpl stack;
 
@@ -34,13 +35,25 @@ class MinMaxStackImplTest {
                 () -> assertTrue(this.stack.isEmpty())
         );
     }
-    
-    @Test
-    public void canGetTheMinimumValue(){
+
+    private void fillWithTestValues() {
         for (Integer testValue : TEST_VALUES) {
             this.stack.push(testValue);
         }
+    }
+    
+    @Test
+    public void canGetTheMinimumValue(){
+        fillWithTestValues();
         assertEquals(MIN_TEST_VALUE, this.stack.getMin());
+    }
+
+
+
+    @Test
+    public void canGetTheMaximumValue(){
+        fillWithTestValues();
+        assertEquals(MAX_TEST_VALUE, this.stack.getMax());
     }
 
 }

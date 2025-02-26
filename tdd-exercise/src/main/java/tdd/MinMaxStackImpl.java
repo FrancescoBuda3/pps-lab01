@@ -6,31 +6,35 @@ import java.util.List;
 public class MinMaxStackImpl  implements MinMaxStack {
     private final List<Integer> stack = new ArrayList<>();
     private int min = Integer.MAX_VALUE;
+    private int max = Integer.MIN_VALUE;
 
     public void push(int value) {
-        stack.add(value);
+        this.stack.add(value);
         if (value < min) {
             min = value;
+        }
+        if (value > max) {
+            max = value;
         }
     }
 
     public int pop() {
-        return stack.removeFirst();
+        return this.stack.removeFirst();
     }
 
     @Override
     public int peek() {
-        return stack.getFirst();
+        return this.stack.getFirst();
     }
 
     @Override
     public int getMin() {
-        return min;
+        return this.min;
     }
 
     @Override
     public int getMax() {
-        return 0;
+        return this.max;
     }
 
     public boolean isEmpty() {
