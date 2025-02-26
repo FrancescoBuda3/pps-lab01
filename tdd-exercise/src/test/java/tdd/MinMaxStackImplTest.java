@@ -3,8 +3,7 @@ package tdd;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,8 +11,8 @@ class MinMaxStackImplTest {
 
     public static final int TEST_VALUE = 5;
     public static final List<Integer> TEST_VALUES = List.of(2, 3, 6, 12, 1, 7, 4, 22, 5);
-    private static final int MIN_TEST_VALUE = 1;
-    private static final int MAX_TEST_VALUE = 22;
+    private static final int MIN_TEST_VALUE = Collections.min(TEST_VALUES);
+    private static final int MAX_TEST_VALUE = Collections.max(TEST_VALUES);
 
     private MinMaxStackImpl stack;
 
@@ -89,6 +88,19 @@ class MinMaxStackImplTest {
     @Test
     public void cannotGetTheMaximumValueIfEmpty(){
         assertThrows(IllegalStateException.class, () -> stack.getMax());
+    }
+
+    @Test
+    public void getTheSecondSmallestValueIfTheMinimumWasPopped(){
+        fillWithTestValues();
+        Optional<Integer> secondSmallestValue = TEST_VALUES.stream()
+                .filter(x -> x != MIN_TEST_VALUE)
+                .min(Integer::compareTo);
+        int poppedValue;
+        do {
+            poppedValue = this.stack.pop();
+        } while (poppedValue != MIN_TEST_VALUE);
+        secondSmallestValue.ifPresent(integer -> assertEquals(integer, stack.getMin()));
     }
 
 }

@@ -18,13 +18,35 @@ public class MinMaxStackImpl  implements MinMaxStack {
         }
     }
 
+    private void replacePoppedMaximum() {
+        this.stack
+                .stream()
+                .max(Integer::compareTo)
+                .ifPresent(value -> this.max = value);
+    }
+
+    private void replacePoppedMinimum() {
+        this.stack
+                .stream()
+                .min(Integer::compareTo)
+                .ifPresent(value -> this.min = value);
+    }
+
     public int pop() {
         if (this.stack.isEmpty()) {
             throw new IllegalStateException();
         } else {
-            return this.stack.removeFirst();
+            int returnValue = this.stack.removeFirst();
+            if (returnValue == this.min){
+                replacePoppedMinimum();
+            } else if (returnValue == this.max){
+                replacePoppedMaximum();
+            }
+            return returnValue;
         }
     }
+
+
 
     @Override
     public int peek() {
