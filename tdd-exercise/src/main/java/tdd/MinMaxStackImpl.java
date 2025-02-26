@@ -13,4 +13,12 @@ public class MinMaxStackImpl {
     public int peak() {
         return stack.getFirst();
     }
+
+    public int pop() {
+        return stack.removeFirst();
+    }
+
+    public boolean isEmpty() {
+        return this.stack.isEmpty();
+    }
 }
