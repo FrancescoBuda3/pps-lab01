@@ -19,7 +19,11 @@ public class MinMaxStackImpl  implements MinMaxStack {
     }
 
     public int pop() {
-        return this.stack.removeFirst();
+        if (stack.isEmpty()) {
+            throw new IllegalStateException();
+        } else {
+            return this.stack.removeFirst();
+        }
     }
 
     @Override

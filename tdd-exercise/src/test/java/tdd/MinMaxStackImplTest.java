@@ -71,4 +71,9 @@ class MinMaxStackImplTest {
         assertEquals(TEST_VALUES.size(), this.stack.size());
     }
 
+    @Test
+    public void cannotPopIfEmpty(){
+        assertThrows(IllegalStateException.class, () -> stack.pop());
+    }
+
 }
