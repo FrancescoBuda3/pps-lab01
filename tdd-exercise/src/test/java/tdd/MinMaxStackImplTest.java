@@ -16,8 +16,9 @@ class MinMaxStackImplTest {
 
     @Test
     public void oneValueCanBePushed(){
-        this.stack.push(5);
-        assertEquals(5, stack.peak());
+        int testValue = 5;
+        this.stack.push(testValue);
+        assertEquals(testValue, stack.peak());
     }
 
 }

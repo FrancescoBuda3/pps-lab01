@@ -6,8 +6,8 @@ import java.util.List;
 public class MinMaxStackImpl {
     private final List<Integer> stack = new ArrayList<>();
 
-    public void push(int i) {
-        stack.add(i);
+    public void push(int value) {
+        stack.add(value);
     }
 
     public int peak() {
