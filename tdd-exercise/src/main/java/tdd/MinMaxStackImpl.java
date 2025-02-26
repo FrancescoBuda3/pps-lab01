@@ -46,7 +46,11 @@ public class MinMaxStackImpl  implements MinMaxStack {
 
     @Override
     public int getMax() {
-        return this.max;
+        if (this.stack.isEmpty()) {
+            throw new IllegalStateException();
+        } else {
+            return this.max;
+        }
     }
 
     public boolean isEmpty() {
