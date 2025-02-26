@@ -3,6 +3,7 @@ package tdd;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -48,12 +49,20 @@ class MinMaxStackImplTest {
         assertEquals(MIN_TEST_VALUE, this.stack.getMin());
     }
 
-
-
     @Test
     public void canGetTheMaximumValue(){
         fillWithTestValues();
         assertEquals(MAX_TEST_VALUE, this.stack.getMax());
+    }
+
+    @Test
+    public void valuesArePoppedInTheCorrectOrder(){
+        fillWithTestValues();
+        List<Integer> poppedValues = new ArrayList<> ();
+        for (int i = 0; i < TEST_VALUES.size(); i++) {
+            poppedValues.add(stack.pop());
+        }
+        assertEquals(TEST_VALUES, poppedValues.reversed());
     }
 
 }

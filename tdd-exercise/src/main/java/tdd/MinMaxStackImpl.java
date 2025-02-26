@@ -9,7 +9,7 @@ public class MinMaxStackImpl  implements MinMaxStack {
     private int max = Integer.MIN_VALUE;
 
     public void push(int value) {
-        this.stack.add(value);
+        this.stack.addFirst(value);
         if (value < min) {
             min = value;
         }
