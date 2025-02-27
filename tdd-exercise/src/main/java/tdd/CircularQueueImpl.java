@@ -13,6 +13,11 @@ public class CircularQueueImpl implements CircularQueue {
 
     @Override
     public int peek() {
-        return queue.getLast();
+        return this.queue.getLast();
+    }
+
+    @Override
+    public int dequeue() {
+        return this.queue.removeLast();
     }
 }

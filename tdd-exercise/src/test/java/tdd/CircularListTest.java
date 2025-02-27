@@ -24,4 +24,10 @@ public class CircularListTest {
         this.queue.enqueue(TEST_VALUE);
         assertEquals(TEST_VALUE, this.queue.peek());
     }
+
+    @Test
+    public void oneValueCanBeDequeued(){
+        this.queue.enqueue(TEST_VALUE);
+        assertEquals(TEST_VALUE, this.queue.dequeue());
+    }
 }
