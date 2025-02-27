@@ -22,7 +22,11 @@ public class CircularQueueImpl implements CircularQueue {
 
     @Override
     public int peek() {
-        return this.queue.getFirst();
+        if (isEmpty()){
+            throw new IllegalStateException();
+        } else {
+            return this.queue.getFirst();
+        }
     }
 
     @Override
