@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * The test suite for testing the CircularList implementation
@@ -58,5 +59,10 @@ public class CircularListTest {
         fillWithTestValue();
         this.queue.enqueue(TEST_VALUE);
         assertEquals(TEST_VALUES.get(1), this.queue.dequeue());
+    }
+
+    @Test
+    public void cannotDequeueIfEmpty(){
+        assertThrows(IllegalStateException.class, () -> this.queue.dequeue());
     }
 }

@@ -21,6 +21,4 @@ public interface CircularQueue {
     int dequeue();
 
     boolean isEmpty();
-
-    int size();
 }

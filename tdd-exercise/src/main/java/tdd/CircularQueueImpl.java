@@ -27,16 +27,15 @@ public class CircularQueueImpl implements CircularQueue {
 
     @Override
     public int dequeue() {
-        return this.queue.removeFirst();
+        if (isEmpty()){
+            throw new IllegalStateException();
+        } else {
+            return this.queue.removeFirst();
+        }
     }
 
     @Override
     public boolean isEmpty() {
         return this.queue.isEmpty();
-    }
-
-    @Override
-    public int size() {
-        return this.maxSize;
     }
 }
