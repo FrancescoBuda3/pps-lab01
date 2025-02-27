@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CircularQueueImpl implements CircularQueue {
-    private final List<Integer> queue = new ArrayList<>();
+    private final List<Integer> queue;
+
+    public CircularQueueImpl(int size) {
+        this.queue = new ArrayList<>(size);
+    }
 
     @Override
     public void enqueue(int value) {
@@ -18,6 +22,11 @@ public class CircularQueueImpl implements CircularQueue {
 
     @Override
     public int dequeue() {
-        return this.queue.removeLast();
+        return this.queue.removeFirst();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return this.queue.isEmpty();
     }
 }

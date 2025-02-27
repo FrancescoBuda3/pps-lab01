@@ -19,4 +19,6 @@ public interface CircularQueue {
     int peek();
 
     int dequeue();
+
+    boolean isEmpty();
 }
